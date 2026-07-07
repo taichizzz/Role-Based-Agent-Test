@@ -1,0 +1,259 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1220;
+  --panel: #1a1f33;
+  --panel-border: #2a3150;
+  --text: #eef2ff;
+  --muted: #aab4d6;
+  --accent: #8b5cf6;
+  --accent-strong: #7c3aed;
+  --watching: #38bdf8;
+  --completed: #34d399;
+  --danger: #fb7185;
+  --warning: #fbbf24;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.app-body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1a1f33 0%, var(--bg) 55%);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#app.app-shell {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.app-header {
+  margin-bottom: 1.5rem;
+}
+
+.app-title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.app-subtitle {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+}
+
+.panel {
+  background: rgba(26, 31, 51, 0.92);
+  border: 1px solid var(--panel-border);
+  border-radius: 18px;
+  padding: 1.25rem;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+}
+
+.panel + .panel {
+  margin-top: 1rem;
+}
+
+.anime-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.form-input {
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  background: #0b1020;
+  color: var(--text);
+  padding: 0.85rem 1rem;
+}
+
+.form-input:focus,
+.primary-button:focus,
+.filter-tab:focus,
+.episode-button:focus,
+.star-button:focus,
+.delete-button:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.primary-button,
+.filter-tab,
+.episode-button,
+.star-button,
+.delete-button {
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.primary-button:hover,
+.filter-tab:hover,
+.episode-button:hover,
+.star-button:hover,
+.delete-button:hover {
+  transform: translateY(-1px);
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: white;
+  min-height: 48px;
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+}
+
+.form-error {
+  min-height: 1.5rem;
+  margin: 0.75rem 0 0;
+  color: var(--danger);
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filter-tab {
+  background: #11172a;
+  color: var(--muted);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.filter-tab.active {
+  background: rgba(139, 92, 246, 0.18);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(139, 92, 246, 0.65);
+}
+
+.empty-state {
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--panel-border);
+  border-radius: 14px;
+  background: rgba(11, 16, 32, 0.45);
+}
+
+.anime-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.anime-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--panel-border);
+  background: #11172a;
+}
+
+.status-watching {
+  border-left: 5px solid var(--watching);
+}
+
+.status-completed {
+  border-left: 5px solid var(--completed);
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(17, 23, 42, 1));
+}
+
+.anime-card__main {
+  flex: 1;
+}
+
+.anime-card__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+}
+
+.anime-card__meta,
+.anime-card__status {
+  margin: 0.2rem 0;
+  color: var(--muted);
+}
+
+.anime-card__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.episode-controls,
+.rating-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.episode-button {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: #232b46;
+  color: var(--text);
+}
+
+.watched-count {
+  min-width: 2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.star-button {
+  background: transparent;
+  color: #5b6487;
+  font-size: 1.35rem;
+  padding: 0.2rem;
+}
+
+.star-button.is-selected {
+  color: var(--warning);
+}
+
+.delete-button {
+  background: rgba(251, 113, 133, 0.15);
+  color: #ffc6d0;
+  padding: 0.65rem 0.9rem;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .anime-form {
+    grid-template-columns: 1fr;
+  }
+
+  .anime-card {
+    flex-direction: column;
+  }
+
+  .anime-card__controls {
+    align-items: stretch;
+  }
+
+  .episode-controls,
+  .rating-controls {
+    flex-wrap: wrap;
+  }
+}
