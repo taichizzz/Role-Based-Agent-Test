@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AniTrack</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="app-body">
+    <main id="app" class="app-shell">
+      <header class="app-header">
+        <h1 class="app-title">AniTrack</h1>
+        <p class="app-subtitle">Track what you are watching, finishing, and rating.</p>
+      </header>
+
+      <section id="add-section" class="panel">
+        <form id="anime-form" class="anime-form" novalidate>
+          <label class="form-label">
+            Anime Title
+            <input id="title-input" class="form-input" type="text" name="title" placeholder="e.g. Frieren" />
+          </label>
+          <label class="form-label">
+            Total Episodes
+            <input id="episodes-input" class="form-input" type="number" name="totalEpisodes" min="1" step="1" placeholder="e.g. 28" />
+          </label>
+          <button id="add-button" class="primary-button" type="submit">Add Anime</button>
+        </form>
+        <p id="form-error" class="form-error" aria-live="polite"></p>
+      </section>
+
+      <section id="filters-section" class="panel">
+        <div id="filter-tabs" class="filter-tabs" role="tablist" aria-label="Anime filters">
+          <button class="filter-tab active" type="button" data-filter="All">All</button>
+          <button class="filter-tab" type="button" data-filter="Watching">Watching</button>
+          <button class="filter-tab" type="button" data-filter="Completed">Completed</button>
+        </div>
+      </section>
+
+      <section id="list-section" class="panel">
+        <p id="empty-state" class="empty-state">No anime to show yet.</p>
+        <ul id="anime-list" class="anime-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
